@@ -1,18 +1,68 @@
 # EX-6 IMPLEMENTATION OF PING COMMAND
 
-DATE :
+# DATE :13-04-2023
 
-AIM :
+# AIM :To write the python program for simulating ping command.
 
+# ALGORITHM :
+1.start the program.
 
-ALGORITHM :
+2.Include necessary package in java.
 
+3.To create a process object p to implement the ping command.
 
-PROGRAM :
+4.declare one Buffered Reader stream class object.
 
+5.Get the details of the server
 
-OUTPUT :
+6.length of the IP address.
 
+7.time required to get the details.
 
+8.send packets, receive packets and lost packets.
 
-RESULT :
+9.minimum, maximum and average times.
+
+10.print the results.
+
+11.Stop the program.
+
+# PROGRAM :
+# CLIENT:
+```
+# Developed by : P SYAM TEJ
+# Register Number : 212221240056
+import socket
+from pythonping import ping
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+    hostname=c.recv(1024).decode()
+    try:
+        c.send(str(ping(hostname, verbose=False)).encode())
+    except KeyError:
+        c.send("Not Found".encode())
+```
+# SERVER:
+```
+# Developed by : P SYAM TEJ
+# Register Number : 212221240056
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+    ip=input("Enter the website you want to ping ")
+    s.send(ip.encode())
+    print(s.recv(1024).decode())
+```
+
+# OUTPUT :
+# CLIENT:
+![image](https://github.com/NAGINENIROHITH/EX-6/assets/118344049/33390263-63e0-426e-9ae2-93cbded8e7a5)
+# SERVER:
+![image](https://github.com/NAGINENIROHITH/EX-6/assets/118344049/07d8c614-a0ae-4d94-a603-343ee5cdc926)
+
+# RESULT :
+Thus, the python program for simulating ping command was successfully executed.
